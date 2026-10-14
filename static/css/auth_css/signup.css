@@ -1,0 +1,34 @@
+:root{
+    --Primary-color: #991B36;
+    --Secondary-color: #C83E57;
+    --Tertiary-color: #F5F8E9;
+    --Background-color: #FAF7F5;
+    --Darks: #252226;
+}
+
+
+#splashScreen{
+    height: 100dvh;
+    width: 100%;
+    background-color: var(--Primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    position: absolute;
+    transition: all 1.5s ease-in-out;
+}
+
+#splashScreen.reveal{
+    background-color: var(--Tertiary-color);
+}
+
+#logo{
+    height: min(50cqw, 50cqh);
+    opacity: 0;
+    transition: all 0.8s ease-in-out;
+}
+
+#logo.reveal{
+    opacity: 1;
+}

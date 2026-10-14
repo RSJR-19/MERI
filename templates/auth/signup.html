@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MERI - Signup</title>
-    <link rel="stylesheet" href="/static/css/reset.css">
-    <link rel="stylesheet" href="/static/css/auth_css/signup.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth_css/signup.css') }}">
 </head>
 <body>
     <div id="splashScreen">
-        <img src="/images/logo_without_bg.png" alt="MERI logo" id="logo">
+        <img src="{{ url_for('static', filename='images/logo_without_bg.png')}}" alt="MERI logo" id="logo">
     </div>
 
     <script>

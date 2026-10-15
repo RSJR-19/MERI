@@ -5,6 +5,9 @@
     --Background-color: #FAF7F5;
     --Darks: #252226;
 }
+body{
+    overflow: hidden;
+}
 
 
 #splashScreen{
@@ -16,7 +19,9 @@
     align-items: center;
     z-index: 999;
     position: absolute;
-    transition: all 1.5s ease-in-out;
+    transition: transform 0.7s ease-in-out, background-color 1.5s ease-in-out;
+    left: 0;
+    box-shadow: 0 2px 8px rgba(37, 34, 38, 0.08);
 }
 
 #splashScreen.reveal{
@@ -31,4 +36,15 @@
 
 #logo.reveal{
     opacity: 1;
+    
+}
+
+#splashScreen.swipe{
+    transform: translateX(-100%);
+}
+
+#signupScreen{
+    height: 100dvh;
+    width: 100%;
+    background-color: var(--Tertiary-color);
 }

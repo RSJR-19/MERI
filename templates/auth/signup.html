@@ -11,6 +11,9 @@
     <div id="splashScreen">
         <img src="{{ url_for('static', filename='images/logo_without_bg.png')}}" alt="MERI logo" id="logo">
     </div>
+    <div id="signupScreen">
+
+    </div>
 
     <script>
         const splashScreen = document.getElementById("splashScreen");
@@ -19,13 +22,13 @@
             splashScreen.classList.add("reveal");
             setTimeout(()=>{
                 logo.classList.add("reveal");
+                setTimeout(()=>{
+                    console.log("hi")
+                    splashScreen.classList.add("swipe");
+                }, 1300)
             }, 550)
-            
 
         }, 200)
-
-
     </script>
-    
 </body>
 </html>

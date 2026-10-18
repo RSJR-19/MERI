@@ -7,28 +7,56 @@
     <link rel="stylesheet" href="/static/css/reset.css">
     <link rel="stylesheet" href="/static/css/auth_css/signup.css">
 </head>
-<body>
+<body id="body">
     <div id="splashScreen">
         <img src="/static/images/logo_without_bg.png" alt="MERI logo" id="logo">
     </div>
-    <div id="getStartedScreen">
+    <div id="mainScreen">
+        <div id="getStartedScreen">
         <button id="getStartedBtn">Get Started</button>
-        
-    </div>
-    <div id="signupScreen">
+        </div>
+        <div id="loginSignupScreen">
+            <div id="logoContainer">
+                <img id="logoLoginSignup" src="/static/images/logo_without_bg.png" alt="logo">
+            </div>
+            <div id="choicesContainer">
+                <p id="loginP">LOGIN</p>
+                <p id="signupP">SIGNUP</p>
+            </div>
+            <div id="loginSignupContainer"></div>
+            
+            <div class="effects"></div>
+
+        </div>
 
     </div>
+    
 
     <script>
         const splashScreen = document.getElementById("splashScreen");
         const getStartedScreen = document.getElementById("getStartedScreen");
         const getStartedBtn = document.getElementById('getStartedBtn');
         const logo = document.getElementById("logo");
+        const body = document.getElementById("body");
+        const loginP = document.getElementById("loginP");
+        const signupP = document.getElementById("signupP");
+
 
         getStartedBtn.addEventListener('click', ()=>{
             getStartedScreen.classList.add("swipe");
+            body.classList.add("reveal");
         });
-        
+
+        loginP.addEventListener('click', () => {
+            loginP.classList.remove("change");
+            signupP.classList.remove("change");
+        });
+
+        signupP.addEventListener('click', () => {
+            loginP.classList.add("change");
+            signupP.classList.add("change");
+        });
+
         setTimeout(()=>{
             splashScreen.classList.add("reveal");
             setTimeout(()=>{

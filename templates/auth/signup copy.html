@@ -23,7 +23,10 @@
                 <p id="loginP">LOGIN</p>
                 <p id="signupP">SIGNUP</p>
             </div>
-            <div id="loginSignupContainer"></div>
+            <div id="loginSignupContainer">
+                <div id="loginScreen"></div>
+                <div id="signupScreen"></div>
+            </div>
             
             <div class="effects"></div>
 
@@ -40,6 +43,8 @@
         const body = document.getElementById("body");
         const loginP = document.getElementById("loginP");
         const signupP = document.getElementById("signupP");
+        const loginScreen = document.getElementById("loginScreen");
+        const signupScreen = document.getElementById("signupScreen");
 
 
         getStartedBtn.addEventListener('click', ()=>{
@@ -50,11 +55,13 @@
         loginP.addEventListener('click', () => {
             loginP.classList.remove("change");
             signupP.classList.remove("change");
+            loginScreen.classList.remove("swipe");
         });
 
         signupP.addEventListener('click', () => {
             loginP.classList.add("change");
             signupP.classList.add("change");
+            loginScreen.classList.add("swipe");
         });
 
         setTimeout(()=>{

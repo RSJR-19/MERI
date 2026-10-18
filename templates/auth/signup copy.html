@@ -11,13 +11,24 @@
     <div id="splashScreen">
         <img src="/static/images/logo_without_bg.png" alt="MERI logo" id="logo">
     </div>
+    <div id="getStartedScreen">
+        <button id="getStartedBtn">Get Started</button>
+        
+    </div>
     <div id="signupScreen">
 
     </div>
 
     <script>
         const splashScreen = document.getElementById("splashScreen");
+        const getStartedScreen = document.getElementById("getStartedScreen");
+        const getStartedBtn = document.getElementById('getStartedBtn');
         const logo = document.getElementById("logo");
+
+        getStartedBtn.addEventListener('click', ()=>{
+            getStartedScreen.classList.add("swipe");
+        });
+        
         setTimeout(()=>{
             splashScreen.classList.add("reveal");
             setTimeout(()=>{
@@ -25,7 +36,7 @@
                 setTimeout(()=>{
                     console.log("hi")
                     splashScreen.classList.add("swipe");
-                }, 1300)
+                }, 1500)
             }, 550)
 
         }, 200)

@@ -7,6 +7,10 @@
 }
 body{
     overflow: hidden;
+    background-color: var(--Secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -19,7 +23,7 @@ body{
     align-items: center;
     z-index: 999;
     position: absolute;
-    transition: transform 0.7s ease-in-out, background-color 1.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, background-color 1.5s ease-in-out;
     left: 0;
     box-shadow: 0 2px 8px rgba(37, 34, 38, 0.08);
 }
@@ -43,8 +47,36 @@ body{
     transform: translateX(-100%);
 }
 
+#getStartedScreen{
+    position: absolute;
+    height: 100dvh;
+    max-height: 1000px;
+    width: 100%;
+    border-radius: 12px;
+    max-width: 600px;
+    background-color: var(--Primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+}
+
+#getStartedBtn{
+    padding: 10px;
+}
+
+#getStartedScreen.swipe{
+    transform: translateX(-100%);
+}
+
+
+
 #signupScreen{
     height: 100dvh;
+    max-height: 1000px;
     width: 100%;
+    border-radius: 12px;
+    max-width: 600px;
     background-color: var(--Tertiary-color);
+
 }

@@ -43,11 +43,17 @@ def login():
     user = cursor.fetchone()
 
     if user is None:
-        return "<h1>User not found!</h1>"
+        return jsonify({
+            "success": False,
+            "message": 'User not found'
+        }),401
 
     else:
         if check_password_hash(user[0], password):
-            return f"<h1> Welcome Back, {user[1]}!"
+            return jsonify({
+                "success": True,
+                "message": f"Welcome, {user[1]}!"
+            }), 200
         else:
             return f"Wrong password!"
 

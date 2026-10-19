@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,56 +26,53 @@
             </div>
             <div id="loginSignupContainer">
                 <div id="loginScreen">
-                    <form action="">
+                    <form action="/login" method="POST" id="loginForm">
                         <div class="input-container">
                             <p>Email address</p>
-                            <input class="input-bar" type="email" required>
+                            <input class="input-bar" type="email" name="email" required id="emailLoginInput">
                         </div>
                         <div class="input-container">
                             <p>Password</p>
-                            <input class="input-bar" type="password" required>
+                            <input class="input-bar" type="password" name="password" required id="passwordLoginInput">
                             <div class="forgot-container">
                                 <p>Forgot Password?</p>
                             </div>
                         </div>
                         <div class="btn-container">
-                            <button id="loginBtn">Login</button>
+                            <button id="loginBtn" type="submit">Login</button>
                         </div>
-                        
                     </form>
-
                 </div>
                 <div id="signupScreen">
-                    <form action="">
+                    <form action="/signup" method="POST" id="signupForm">
                         <div class="input-container">
-                        <p>Username</p>
-                        <input class="input-bar" type="text" required>
-                    </div>
-                    <div class="input-container">
-                        <p>Email address</p>
-                        <input class="input-bar" type="text" required>
-                    </div>
-                    <div class="input-container">
-                        <p>Password</p>
-                        <input class="input-bar" type="password" required>
-                    </div>
-                    <div class="input-container">
-                        <p>Confirm Password</p>
-                        <input class="input-bar" type="password" required>
-                    </div>
-                    <div class="btn-container" id="btnContainerSignup">
-                        <button id="signupBtn">Create Account</button>
-                    </div>
+                            <p>Username</p>
+                            <input class="input-bar" type="text" name="username" required id="usernameSignupInput">
+                        </div>
+                        <div class="input-container">
+                            <p>Email address</p>
+                            <input class="input-bar" type="text" name="email" required id="emailSignupInput">
+                        </div>
+                        <div class="input-container">
+                            <p>Password</p>
+                            <input class="input-bar" type="password" name="password" required id="passwordSignupInput">
+                        </div>
+                        <div class="input-container">
+                            <p>Confirm Password</p>
+                            <input class="input-bar" type="password" required id="confirmPasswordSignupInput">
+                        </div>
+                        <div class="btn-container" id="btnContainerSignup">
+                            <button id="signupBtn" type="submit">Create Account</button>
+                        </div>
                     </form>
                 </div>
             </div>
-            
+
             <div class="effects"></div>
 
         </div>
 
     </div>
-    
 
     <script>
         const splashScreen = document.getElementById("splashScreen");
@@ -86,7 +84,12 @@
         const signupP = document.getElementById("signupP");
         const loginScreen = document.getElementById("loginScreen");
         const signupScreen = document.getElementById("signupScreen");
-
+        const emailLoginInput = document.getElementById("emailLoginInput");
+        const passwordLoginInput = document.getElementById('passwordLoginInput');
+        const usernameSignupInput = document.getElementById("usernameSignupInput");
+        const emailSignupInput = document.getElementById("emailSignupInput");
+        const passwordSignupInput = document.getElementById("passwordSignupInput");
+        const confirmPasswordSignupInput = document.getElementById("confirmPasswordSignupInput");
 
         getStartedBtn.addEventListener('click', ()=>{
             getStartedScreen.classList.add("swipe");
@@ -94,12 +97,18 @@
         });
 
         loginP.addEventListener('click', () => {
+            emailLoginInput.value = "";
+            passwordLoginInput.value = "";
             loginP.classList.remove("change");
             signupP.classList.remove("change");
             loginScreen.classList.remove("swipe");
         });
 
         signupP.addEventListener('click', () => {
+            usernameSignupInput.value = "";
+            emailSignupInput.value = "";
+            passwordSignupInput.value = "";
+            confirmPasswordSignupInput.value = "";
             loginP.classList.add("change");
             signupP.classList.add("change");
             loginScreen.classList.add("swipe");
@@ -117,5 +126,7 @@
 
         }, 200)
     </script>
+    <script src="/static/js/auth.js"></script>
 </body>
 </html>
+```

@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MERI - Signup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth_css/signup.css') }}">
+</head>
+<body id="body">
+    <div id="splashScreen">
+        <img src="{{ url_for('static', filename='images/logo_without_bg.png') }}" alt="MERI logo" id="logo">
+    </div>
+    <div id="mainScreen">
+        <div id="getStartedScreen">
+        <button id="getStartedBtn">Get Started</button>
+        </div>
+        <div id="loginSignupScreen">
+            <div id="logoContainer">
+                <img id="logoLoginSignup" src="{{ url_for('static', filename='images/logo_without_bg.png') }}" alt="logo">
+            </div>
+            <div id="choicesContainer">
+                <p id="loginP">LOGIN</p>
+                <p id="signupP">SIGNUP</p>
+            </div>
+            <div id="loginSignupContainer">
+                <div id="loginScreen">
+                    <form action="/login" method="POST">
+                        <div class="input-container">
+                            <p>Email address</p>
+                            <input class="input-bar" type="email" name="email" required>
+                        </div>
+                        <div class="input-container">
+                            <p>Password</p>
+                            <input class="input-bar" type="password" name="password" required>
+                            <div class="forgot-container">
+                                <p>Forgot Password?</p>
+                            </div>
+                        </div>
+                        <div class="btn-container">
+                            <button id="loginBtn" type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="signupScreen">
+                    <form action="/signup" method="POST">
+                        <div class="input-container">
+                            <p>Username</p>
+                            <input class="input-bar" type="text" name="username" required>
+                        </div>
+                        <div class="input-container">
+                            <p>Email address</p>
+                            <input class="input-bar" type="text" name="email" required>
+                        </div>
+                        <div class="input-container">
+                            <p>Password</p>
+                            <input class="input-bar" type="password" name="password" required>
+                        </div>
+                        <div class="input-container">
+                            <p>Confirm Password</p>
+                            <input class="input-bar" type="password" required>
+                        </div>
+                        <div class="btn-container" id="btnContainerSignup">
+                            <button id="signupBtn" type="submit">Create Account</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="effects"></div>
+
+        </div>
+
+    </div>
+
+    <script>
+        const splashScreen = document.getElementById("splashScreen");
+        const getStartedScreen = document.getElementById("getStartedScreen");
+        const getStartedBtn = document.getElementById('getStartedBtn');
+        const logo = document.getElementById("logo");
+        const body = document.getElementById("body");
+        const loginP = document.getElementById("loginP");
+        const signupP = document.getElementById("signupP");
+        const loginScreen = document.getElementById("loginScreen");
+        const signupScreen = document.getElementById("signupScreen");
+
+
+        getStartedBtn.addEventListener('click', ()=>{
+            getStartedScreen.classList.add("swipe");
+            body.classList.add("reveal");
+        });
+
+        loginP.addEventListener('click', () => {
+            loginP.classList.remove("change");
+            signupP.classList.remove("change");
+            loginScreen.classList.remove("swipe");
+        });
+
+        signupP.addEventListener('click', () => {
+            loginP.classList.add("change");
+            signupP.classList.add("change");
+            loginScreen.classList.add("swipe");
+        });
+
+        setTimeout(()=>{
+            splashScreen.classList.add("reveal");
+            setTimeout(()=>{
+                logo.classList.add("reveal");
+                setTimeout(()=>{
+                    console.log("hi")
+                    splashScreen.classList.add("swipe");
+                }, 1500)
+            }, 550)
+
+        }, 200)
+    </script>
+</body>
+</html>

@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,18 +11,22 @@
     <div id="splashScreen">
         <img src="/static/images/logo_without_bg.png" alt="MERI logo" id="logo">
     </div>
+
     <div id="mainScreen">
         <div id="getStartedScreen">
-        <button id="getStartedBtn">Get Started</button>
+            <button id="getStartedBtn">Get Started</button>
         </div>
+
         <div id="loginSignupScreen">
             <div id="logoContainer">
                 <img id="logoLoginSignup" src="/static/images/logo_without_bg.png" alt="logo">
             </div>
+
             <div id="choicesContainer">
                 <p id="loginP">LOGIN</p>
                 <p id="signupP">SIGNUP</p>
             </div>
+
             <div id="loginSignupContainer">
                 <div id="loginScreen">
                     <form action="/login" method="POST" id="loginForm">
@@ -31,36 +34,44 @@
                             <p>Email address</p>
                             <input class="input-bar" type="email" name="email" required id="emailLoginInput">
                         </div>
+
                         <div class="input-container">
                             <p>Password</p>
                             <input class="input-bar" type="password" name="password" required id="passwordLoginInput">
+
                             <div class="forgot-container">
                                 <p>Forgot Password?</p>
                             </div>
                         </div>
+
                         <div class="btn-container">
                             <button id="loginBtn" type="submit">Login</button>
                         </div>
                     </form>
                 </div>
+
                 <div id="signupScreen">
                     <form action="/signup" method="POST" id="signupForm">
                         <div class="input-container">
                             <p>Username</p>
                             <input class="input-bar" type="text" name="username" required id="usernameSignupInput">
                         </div>
+
                         <div class="input-container">
                             <p>Email address</p>
                             <input class="input-bar" type="text" name="email" required id="emailSignupInput">
                         </div>
+
                         <div class="input-container">
                             <p>Password</p>
                             <input class="input-bar" type="password" name="password" required id="passwordSignupInput">
                         </div>
+
                         <div class="input-container">
                             <p>Confirm Password</p>
                             <input class="input-bar" type="password" required id="confirmPasswordSignupInput">
                         </div>
+
                         <div class="btn-container" id="btnContainerSignup">
                             <button id="signupBtn" type="submit">Create Account</button>
                         </div>
@@ -68,16 +79,28 @@
                 </div>
             </div>
 
-            <div class="effects"></div>
+            <div id="movingCatContainer">
+                <div id="movingCatContainerRelative">
+                    <div class="cat-frame" id="catFrame">
+                    <div class="cat-ears-container">
+                        <div class="cat-ears-left"></div>
+                        <div class="cat-ears-right"></div>
+                    </div>
+                    <div class="cat-head">
+                        <div class="cat-eyes"></div>
+                        <div class="cat-eyes"></div>
+                    </div>
+                </div>
 
+                </div>
+            </div>
         </div>
-
     </div>
 
     <script>
         const splashScreen = document.getElementById("splashScreen");
         const getStartedScreen = document.getElementById("getStartedScreen");
-        const getStartedBtn = document.getElementById('getStartedBtn');
+        const getStartedBtn = document.getElementById("getStartedBtn");
         const logo = document.getElementById("logo");
         const body = document.getElementById("body");
         const loginP = document.getElementById("loginP");
@@ -85,48 +108,54 @@
         const loginScreen = document.getElementById("loginScreen");
         const signupScreen = document.getElementById("signupScreen");
         const emailLoginInput = document.getElementById("emailLoginInput");
-        const passwordLoginInput = document.getElementById('passwordLoginInput');
+        const passwordLoginInput = document.getElementById("passwordLoginInput");
         const usernameSignupInput = document.getElementById("usernameSignupInput");
         const emailSignupInput = document.getElementById("emailSignupInput");
         const passwordSignupInput = document.getElementById("passwordSignupInput");
         const confirmPasswordSignupInput = document.getElementById("confirmPasswordSignupInput");
+        const catFrame = document.getElementById("catFrame");
 
-        getStartedBtn.addEventListener('click', ()=>{
+        getStartedBtn.addEventListener("click", () => {
             getStartedScreen.classList.add("swipe");
             body.classList.add("reveal");
         });
 
-        loginP.addEventListener('click', () => {
+        loginP.addEventListener("click", () => {
             emailLoginInput.value = "";
             passwordLoginInput.value = "";
+
             loginP.classList.remove("change");
             signupP.classList.remove("change");
             loginScreen.classList.remove("swipe");
+            catFrame.classList.remove("move");
         });
 
-        signupP.addEventListener('click', () => {
+        signupP.addEventListener("click", () => {
             usernameSignupInput.value = "";
             emailSignupInput.value = "";
             passwordSignupInput.value = "";
             confirmPasswordSignupInput.value = "";
+
             loginP.classList.add("change");
             signupP.classList.add("change");
             loginScreen.classList.add("swipe");
+            catFrame.classList.add("move");
         });
 
-        setTimeout(()=>{
+        setTimeout(() => {
             splashScreen.classList.add("reveal");
-            setTimeout(()=>{
-                logo.classList.add("reveal");
-                setTimeout(()=>{
-                    console.log("hi")
-                    splashScreen.classList.add("swipe");
-                }, 1500)
-            }, 550)
 
-        }, 200)
+            setTimeout(() => {
+                logo.classList.add("reveal");
+
+                setTimeout(() => {
+                    console.log("hi");
+                    splashScreen.classList.add("swipe");
+                }, 1500);
+            }, 550);
+        }, 200);
     </script>
+
     <script src="/static/js/auth.js"></script>
 </body>
 </html>
-```

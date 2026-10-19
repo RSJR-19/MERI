@@ -192,6 +192,7 @@ body{
 
 #loginP:hover, #signupP:hover{
     background-color: #c83e572d;
+    transform: scale(1.1);
 }
 
 
@@ -238,6 +239,10 @@ body{
     align-items: flex-end;
 }
 
+.btn-container button:hover{
+    transform: scale(1.3);
+}
+
 #btnContainerSignup{
     align-items: center;
 }
@@ -251,6 +256,11 @@ body{
     color: var(--Background-color);
     font-weight: 600;
     box-shadow: var(--Shadow-Effect);
+    transition: all 0.3s ease-in-out;
+}
+
+#loginBtn:hover, #signupBtn:hover{
+    background-color: var(--Secondary-color);
 }
 
 .input-container{
@@ -258,8 +268,12 @@ body{
     width: 100%;
     display: flex;
     flex-direction: column;
-    color: gray;
 }
+
+.input-container p{
+    color:var(--Darks);
+}
+
 
 .input-bar{
     height: 50%;
@@ -267,6 +281,18 @@ body{
     border-radius: 5px;
     border: 2px solid var(--Secondary-color);
     box-shadow: var(--Shadow-Effect);
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.input-bar:hover{
+    background-color: #c83e572d;
+}
+
+.input-bar:focus{
+    background-color: #c83e572d;
+    outline: none;
+    border-color: var(--Primary-color);
 }
 
 .forgot-container{

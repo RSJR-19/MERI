@@ -6,30 +6,32 @@
     <title>MERI-Welcome</title>
     <link rel="stylesheet" href="/static/css/reset.css">
     <link rel="stylesheet" href="/static/css/dashboard/dashboard.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=home" />
+    <link rel="stylesheet" ref="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=home" />
 </head>
 <body>
     <div id="mainScreen">
+        <div id="logoContainer">
+            <img src="/static/images/logo_without_bg.png" alt="MERI Logo">
+        </div>
         <div id="welcomeContainer">
             <div id="welcomeCard">
-                <h2>How's your day going?</h2>
-                <h2 id="usernameH2">Jinja Name here</h2>
+                <p>Oct 22, 2026 | Thursday</p>
+                <p>How's your day going?</p>
+                <p>Renan</p>
             </div>
         </div>
         <div id="choicesContainer">
+            <h2>Quick Access</h2>
             <div id="choicesFrame">
-                <button>Budget Tracker</button>
-                <button>Schedule</button>
-                <button>To Do List</button>
-                <button>Reviewer</button>
+                <div class="function-choice" id="budgetTrackerContainer">Budget Tracker</div>
+                <div class="function-choice" id="scheduleContainer">Schedule</div>
+                <div class="function-choice" id="toDoListContainer">To do List</div>
+                <div class="function-choice" id="reviewerContainer">Reviewer</div>
             </div>
         </div>
-        <div id="navbarContainer">
-            <nav id="navBar">
-                <span class="material-symbols-outlined" id="homeLogo">home</span>
-            </nav>
+        <div id="navContainer">
+            <nav></nav>
         </div>
-
     </div>
     
 </body>

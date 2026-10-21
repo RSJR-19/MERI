@@ -40,7 +40,7 @@ body{
     justify-content: space-between;
     align-items: flex-start;
     position: relative;
-    padding: 0 5%;
+    padding: 5% 5%;
 }
 
 .settings-container{
@@ -49,6 +49,7 @@ body{
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    margin: 5% 0;
     
 }
 
@@ -168,7 +169,7 @@ body{
 
 #navBar span{
     color: var(--Tertiary-color);
-
+    cursor: pointer;
 }
 
 
@@ -183,4 +184,39 @@ body{
 #settingsIcon{
     margin: 5%;
     color: var(--Darks);
+    cursor: pointer;
+}
+
+#settingsOverlay{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: #c83e571a;
+    z-index: 999;
+    inset: 0;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+#settingsOverlay.reveal{
+    opacity: 1;
+}
+
+#settingsContainer{
+    height: 100%;
+    width: 60%;
+    background-color: var(--Background-color);
+    box-shadow: var(--Shadow-Effect);
+    transform: translateX(100%);
+    transition: all 0.5s ease-in-out;
+    
+}
+
+#settingsContainer.reveal{
+    transform: translateX(0);
 }

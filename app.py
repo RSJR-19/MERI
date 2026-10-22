@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, session, url_for, redirect
 from dotenv import load_dotenv
 from werkzeug.security import check_password_hash, generate_password_hash
 import mysql.connector
@@ -6,6 +6,7 @@ import os
 
 load_dotenv()
 app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY")
 
 connection = mysql.connector.connect(
     host=os.getenv("DB_HOST"),
@@ -48,14 +49,33 @@ def login():
             "message": 'User not found'
         }),401
 
-    else:
-        if check_password_hash(user[0], password):
-            return jsonify({
-                "success": True,
-                "message": f"Welcome, {user[1]}!"
-            }), 200
-        else:
-            return f"Wrong password!"
+    if not check_password_hash(user[0], password):
+        return jsonify({
+            "success": False,
+            "message": "Incorrect password"
+        }), 401
+
+    session["username"] = user[1]
+    session['email'] = email
+
+    return jsonify({
+        "success": True,
+        "message": f"Welcome, {user[1]}!",
+        "redirect": url_for("dashboard")
+    }), 200
+
+@app.route("/dashboard")
+def dashboard():
+    if "username" not in session:
+        return redirect(url_for("index_page"))
+
+    return render_template(
+        "dashboard/dashboard.html",
+        username=session["username"]
+    )
+
+
+
 
     
 

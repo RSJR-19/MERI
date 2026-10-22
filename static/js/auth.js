@@ -18,6 +18,6 @@ loginForm.addEventListener('submit', async function (event){
         alert("User not found");
     }
     else{
-        alert(result.message);
+        window.location.href = result.redirect;
     }
 })

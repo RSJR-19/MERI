@@ -1,30 +1,69 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MERI-Welcome</title>
-    <link rel="stylesheet" href="/static/css/reset.css">
-    <link rel="stylesheet" href="/static/css/dashboard/dashboard.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard/dashboard.css') }}">
+
     <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
 </head>
 <body>
     <div id="mainScreen">
+
         <div id="settingsOverlay">
-            <div id="settingsContainer"></div>
+            <div id="settingsContainer">
+
+                <div class="back-container">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    <p id="backBtn">Back</p>
+                </div>
+
+                <div class="name-settings">
+                    <div class="profile-container">
+                        <div class="profile"></div>
+                    </div>
+
+                    <div class="username-container">
+                        <h3>{{ username }}</h3>
+                    </div>
+                </div>
+
+                <div class="settings-body"></div>
+
+                <div class="logout-settings">
+                    <span class="material-symbols-outlined">logout</span>
+                    <p id="logoutBtn">LOG OUT</p>
+                </div>
+
+            </div>
         </div>
+
+        <div id="logoutOverlay">
+            <div id="logoutPopup">
+                <p>Are you sure you want to Log out?</p>
+                <button id="notYetBtn">Not yet!</button>
+                <button id="yesSirBtn">Yes sir!</button>
+            </div>
+        </div>
+
         <div id="logoContainer">
             <div class="img-container">
-            <img src="/static/images/logo_without_bg.png" alt="MERI Logo">
+                <img
+                    src="{{ url_for('static', filename='images/logo_without_bg.png') }}"
+                    alt="MERI Logo">
             </div>
+
             <div class="settings-container">
-                <span class="material-symbols-outlined" id="settingsIcon">
-menu
-</span>
+                <span class="material-symbols-outlined" id="settingsIcon">menu</span>
             </div>
         </div>
+
         <div id="welcomeContainer">
             <div id="welcomeCard">
                 <p>Oct 22, 2026 | Thursday</p>
@@ -32,15 +71,29 @@ menu
                 <p>Renan</p>
             </div>
         </div>
+
         <div id="choicesContainer">
             <h2>Quick Access</h2>
+
             <div id="choicesFrame">
-                <div class="function-choice" id="budgetTrackerContainer">Budget Tracker</div>
-                <div class="function-choice" id="scheduleContainer">Schedule</div>
-                <div class="function-choice" id="toDoListContainer">To do List</div>
-                <div class="function-choice" id="reviewerContainer">Reviewer</div>
+                <div class="function-choice" id="budgetTrackerContainer">
+                    Budget Tracker
+                </div>
+
+                <div class="function-choice" id="scheduleContainer">
+                    Schedule
+                </div>
+
+                <div class="function-choice" id="toDoListContainer">
+                    To do List
+                </div>
+
+                <div class="function-choice" id="reviewerContainer">
+                    Reviewer
+                </div>
             </div>
         </div>
+
         <div id="navContainer">
             <nav id="navBar">
                 <span class="material-symbols-outlined">account_balance_wallet</span>
@@ -48,12 +101,12 @@ menu
                 <span class="material-symbols-outlined">home</span>
                 <span class="material-symbols-outlined">checklist</span>
                 <span class="material-symbols-outlined">book_2</span>
-                
             </nav>
         </div>
-    </div>
-    <script src="/static/js/dashboard.js">
 
-    </script>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 </body>
 </html>
+```

@@ -47,3 +47,21 @@ notYetBtn.addEventListener('click', ()=>{
         logoutOverlay.style.display = "none";
     }, 400)
 })
+
+yesSirBtn.addEventListener("click", async function(){
+    try{
+        const response = await fetch("/logout", {
+            method: "POST"
+        })
+
+        const result = await response.json();
+
+        if (response.ok && result.success){
+            window.location.href = result.redirect;
+        }
+       
+    }catch(error){
+            console.error("Something's wrong", error);
+            alert("Unable to log out. Please try again.")
+        }
+    })

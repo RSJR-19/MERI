@@ -91,6 +91,13 @@
         const passwordSignupInput = document.getElementById("passwordSignupInput");
         const confirmPasswordSignupInput = document.getElementById("confirmPasswordSignupInput");
 
+        emailSignupInput.value = "";
+        passwordSignupInput.value = "";
+        usernameSignupInput.value = "";
+        emailSignupInput.value = "";
+        passwordSignupInput.value = "";
+        confirmPasswordSignupInput.value = "";
+
         getStartedBtn.addEventListener('click', ()=>{
             getStartedScreen.classList.add("swipe");
             body.classList.add("reveal");

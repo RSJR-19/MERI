@@ -32,7 +32,15 @@ def signup():
 
     cursor.execute("INSERT INTO users(username,email,password_hash) VALUES (%s, %s, %s)", (username, email, password))
     connection.commit()
-    return "<h1>Success</h1>"
+
+    session["username"] = username
+    session["email"] = email
+
+    return jsonify({
+        "success": True,
+        "message": "Account created successfully!",
+        "redirect": url_for("dashboard")
+    }), 201
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -74,7 +82,14 @@ def dashboard():
         username=session["username"]
     )
 
+@app.route("/logout", methods=["POST"])
+def logout():
+    session.clear()
 
+    return jsonify({
+        "success": True,
+        "redirect": url_for("index_page")
+    })
 
 
     

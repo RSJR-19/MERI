@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from werkzeug.security import check_password_hash, generate_password_hash
 import mysql.connector
 import os
+from services import AuthServiceFactory
 
 load_dotenv()
 app = Flask(__name__)
@@ -24,53 +25,36 @@ def index_page():
 
 @app.route('/signup', methods=['POST'])
 def signup():
-    username = request.form.get("username")
-    email = request.form.get("email")
-    password = request.form.get("password")
+    service = AuthServiceFactory.create("signup", cursor, connection)
 
-    password = generate_password_hash(password)
+    result, status_code = service.execute(request.form)
 
-    cursor.execute("INSERT INTO users(username,email,password_hash) VALUES (%s, %s, %s)", (username, email, password))
-    connection.commit()
+    if not result["success"]:
+        return jsonify(result), status_code
+    else:
+        session['username'] = result['username']
+        session['email'] = result['email']
 
-    session["username"] = username
-    session["email"] = email
+        result['redirect'] = url_for('dashboard')
 
-    return jsonify({
-        "success": True,
-        "message": "Account created successfully!",
-        "redirect": url_for("dashboard")
-    }), 201
+        return jsonify(result), status_code
+
 
 @app.route('/login', methods=['POST'])
 def login():
-    email = request.form.get("email")
-    password = request.form.get("password")
+    service = AuthServiceFactory.create("login", cursor)
 
-    cursor.execute("SELECT password_hash, username FROM users WHERE email = %s", (email,))
+    result, status_code = service.execute(request.form)
 
-    user = cursor.fetchone()
+    if not result['success']:
+        return jsonify(result), status_code
 
-    if user is None:
-        return jsonify({
-            "success": False,
-            "message": 'User not found'
-        }),401
+    session['username'] = result['username']
+    session['email'] = result['email']
 
-    if not check_password_hash(user[0], password):
-        return jsonify({
-            "success": False,
-            "message": "Incorrect password"
-        }), 401
+    result['redirect'] = url_for('dashboard')
 
-    session["username"] = user[1]
-    session['email'] = email
-
-    return jsonify({
-        "success": True,
-        "message": f"Welcome, {user[1]}!",
-        "redirect": url_for("dashboard")
-    }), 200
+    return jsonify(result), status_code
 
 @app.route("/dashboard")
 def dashboard():

@@ -89,7 +89,7 @@ class SignupService(AuthService):
 
             if self.cursor.fetchone() is not None:
                 return {
-                    "sucess": False,
+                    "success": False,
                     "message": "Username is already used"
                 }, 409
 

@@ -75,7 +75,20 @@ def logout():
         "redirect": url_for("index_page")
     })
 
+@app.route("/check-username", methods=['POST'])
+def checkUsername():
+    username = request.form.get("username")
+    cursor.execute("SELECT username FROM users WHERE username = %s", (username,))
 
-    
+    if cursor.fetchone():
+        return {
+            'success' : False,
+            'message' : 'Username already taken!'
+        }, 409
+
+    return {
+        'success' : True,
+        'message' : 'Username available'
+    }, 200
 
 app.run(debug=False)
